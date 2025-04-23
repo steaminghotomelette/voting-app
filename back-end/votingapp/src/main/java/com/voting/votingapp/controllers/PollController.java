@@ -1,10 +1,12 @@
 package com.voting.votingapp.controllers;
 
 import com.voting.votingapp.models.Poll;
+import com.voting.votingapp.requests.VoteUpdateRequest;
 import com.voting.votingapp.services.PollService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,5 +40,17 @@ public class PollController {
             .getPollById(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.noContent().build());
+    }
+
+    @PatchMapping("/{id}")
+    public void updateVote(
+        @PathVariable Long id,
+        @RequestBody VoteUpdateRequest body
+    ) {
+        pollService.updateVote(
+            id,
+            body.getOptionIndex(),
+            body.getIncrementBy()
+        );
     }
 }

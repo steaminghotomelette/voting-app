@@ -22,8 +22,5 @@ public class Poll {
     private String question;
 
     @ElementCollection // This creates a new entity (table)
-    private List<String> options = new ArrayList<>();
-
-    @ElementCollection // Counters can be denormalized in the future
-    private List<Long> votes = new ArrayList<>();
+    private List<OptionVote> options = new ArrayList<>();
 }

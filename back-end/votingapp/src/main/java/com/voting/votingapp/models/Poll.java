@@ -1,4 +1,4 @@
-package com.voting.votingapp.model;
+package com.voting.votingapp.models;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
